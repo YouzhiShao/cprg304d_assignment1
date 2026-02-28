@@ -1,6 +1,9 @@
 package shapes;
 
-public abstract class  Shape implements Comparable<Shape> {
+import java.util.Comparator;
+
+public abstract class  Shape implements Comparable<Shape> 
+{
 	protected double height;
 	
 	public Shape(double h){
@@ -26,8 +29,45 @@ public abstract class  Shape implements Comparable<Shape> {
     @Override
     public String toString() {
         return String.format("%s(h=%.6f, A=%.6f, V=%.6f)",
-                getClass().getSimpleName(), height, calcBaseArea(), calcVolume());
+                getClass().getSimpleName(), height, calcBaseArea(), calcVolume());    
     }
 
 
+    //inner class VolumeComparator
+    public static class VolumeComparator implements Comparator<Shape>
+    {
+    	@Override
+    	public int compare(Shape s1, Shape s2)
+    	{
+    		if(s1.calcVolume() < s2.calcVolume())
+    		{
+    			return 1;
+    		}
+    		if(s1.calcVolume() > s2.calcVolume())
+    		{
+    			return -1;
+    		}
+    		return 0;
+    	}  	
+    	
+    }
+    
+    public static class BaseAreaComparator implements Comparator<Shape>
+    {
+    	@Override
+    	public int compare(Shape s1, Shape s2)
+    	{
+    		if(s1.calcBaseArea() < s2.calcBaseArea())
+    		{
+    			return 1;
+    		}
+    		if(s1.calcBaseArea() > s2.calcBaseArea())
+    		{
+    			return -1;
+    		}
+    		return 0;
+    	}
+    }
+
+    
 }

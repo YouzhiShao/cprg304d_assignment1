@@ -1,5 +1,7 @@
 package appDomain;
 
+import manager.SortManager;
+
 /**
  * <p>
  * This application driver code is designed to be used as a basis for the
@@ -32,6 +34,7 @@ public class AppDriver
 		// algorithm on a list of comparables to sort using either the
 		// natural order (comparable) or other orders (comparators)
 
+		new SortManager(args);
 	}
 
 }
