@@ -105,8 +105,8 @@ public class SortManager
 	        case 'z': algName = "Heap Sort"; break;
 	    }
 	    long endTime = System.currentTimeMillis();
-	    System.out.println(algName + " run time was: " + (endTime - startTime) + "ms");
 	    displayResults();
+	    System.out.println(algName + " run time was: " + (endTime - startTime) + "ms");
 	}
 
 	private void displayResults()
