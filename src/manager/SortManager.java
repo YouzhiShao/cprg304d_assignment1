@@ -30,6 +30,9 @@ public class SortManager
 	}
 	
 	private void sortShape() {
+		
+		long startTime = System.currentTimeMillis();
+		
 	    switch (sortType) {
 	        case 'b': // Bubble Sort
 	            if (compareType == 'h') {
@@ -83,15 +86,45 @@ public class SortManager
 	            
 	        case 'z': // Heap Sort
 	            if (compareType == 'h') {
-	                Sort.yourChoiceSort(shapes);
+	                Sort.heapSort(shapes);
 	            } else if (compareType == 'v') {
-	                Sort.yourChoiceSort(shapes, new Shape.VolumeComparator());
+	                Sort.heapSort(shapes, new Shape.VolumeComparator());
 	            } else if (compareType == 'a') {
-	                Sort.yourChoiceSort(shapes, new Shape.BaseAreaComparator());
+	                Sort.heapSort(shapes, new Shape.BaseAreaComparator());
 	            }
-	            break;
-	            
+	            break;	            
 	    }
+	    
+	    String algName = "";
+	    switch (sortType) {
+	        case 'b': algName = "Bubble Sort"; break;
+	        case 's': algName = "Selection Sort"; break;
+	        case 'i': algName = "Insertion Sort"; break;
+	        case 'm': algName = "Merge Sort"; break;
+	        case 'q': algName = "Quick Sort"; break;
+	        case 'z': algName = "Heap Sort"; break;
+	    }
+	    long endTime = System.currentTimeMillis();
+	    System.out.println(algName + " run time was: " + (endTime - startTime) + "ms");
+	    displayResults();
+	}
+
+	private void displayResults()
+	{
+		if (shapes == null || shapes.length == 0) 
+			{
+			System.err.println("Error: No data loaded. Please check your file path.");
+			return;
+			}
+
+	    System.out.println("First element is: " + shapes[0]);
+
+	    for (int i = 1000; i < shapes.length - 1; i += 1000) {
+	        System.out.println(i + "-th element is: " + shapes[i]);
+	    }
+
+	    System.out.println("Last element is: " + shapes[shapes.length - 1]);
+		
 	}
 
 	private void loadShapes()

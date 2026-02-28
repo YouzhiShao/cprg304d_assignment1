@@ -213,9 +213,9 @@ public class Sort
 		return i + 1;
 	}
 
-	// 6. Your Choice: Heap Sort (堆積排序)
+	// 6. Heap Sort
 
-		public static <T extends Comparable<? super T>> void yourChoiceSort(T[] arr) {
+		public static <T extends Comparable<? super T>> void heapSort(T[] arr) {
 			int n = arr.length;
 			for (int i = n / 2 - 1; i >= 0; i--) heapify(arr, n, i);
 			for (int i = n - 1; i > 0; i--) {
@@ -240,7 +240,7 @@ public class Sort
 			}
 		}
 
-		public static <T> void yourChoiceSort(T[] arr, Comparator<? super T> c) {
+		public static <T> void heapSort(T[] arr, Comparator<? super T> c) {
 			int n = arr.length;
 			for (int i = n / 2 - 1; i >= 0; i--) heapify(arr, n, i, c);
 			for (int i = n - 1; i > 0; i--) {
